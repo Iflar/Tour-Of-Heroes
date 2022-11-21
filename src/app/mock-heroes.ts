@@ -1,3 +1,5 @@
+//this is a set of mock data -- used only for testing purposes.
+
 import { Hero } from "./hero"
 
 export const HEROES: Hero[] = [
