@@ -27,10 +27,19 @@ export class HeroesComponent implements OnInit {
   /*
   While this method (getHeroes) dosn't return anything itself, it does set the property'heroes' array values in this class
     equal to the array values retrieved from the hero service.
-  */
+  Old method
+  --
   getHeroes(): void {
-    this.heroes = this.heroService.getHeroes();
+  this.heroes = this.heroService.getHeroes();
+  --
   }
+  */
+
+  getHeroes(): void {
+    this.heroService.getHeroes()
+      .subscribe(heroes => this.heroes = heroes)
+  }
+  
 
   onSelect(hero: Hero): void{
      this.selectedHero = hero;
