@@ -11,18 +11,20 @@ import { MessageService } from '../message.service';
 })
 export class HeroesComponent implements OnInit {
 
-  hero: Hero = {
-    id: 1,
-    name: "Windstorm"
-  };
-
   heroes: Hero[] = [];
 
   selectedHero?: Hero;
 
-  
-
   constructor(private heroService: HeroService){}
+
+  ngOnInit(): void {
+    this.getHeroes();
+  }
+
+  getHeroes(): void {
+    this.heroService.getHeroes()
+      .subscribe(heroes => this.heroes = heroes)
+  }
 
   /*
   While this method (getHeroes) dosn't return anything itself, it does set the property'heroes' array values in this class
@@ -34,18 +36,6 @@ export class HeroesComponent implements OnInit {
   --
   }
   */
-
-  getHeroes(): void {
-    this.heroService.getHeroes()
-      .subscribe(heroes => this.heroes = heroes)
-  }
-  
-
-  onSelect(hero: Hero): void{
-     this.selectedHero = hero;
-  }
-
-  ngOnInit(): void {
-    this.getHeroes();
-  }
 }
+
+
